@@ -4,3 +4,4 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli
 
 RUN a2enmod rewrite
 
+ADD devwebsite.local.conf /etc/apache2/sites-available/000-default.conf

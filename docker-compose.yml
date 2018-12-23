@@ -1,7 +1,12 @@
 version: '3'
 
 services:
-
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
   db:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
@@ -19,5 +24,7 @@ services:
     build: .
     ports:
       - 8282:80
+    environment:
+      - VIRTUAL_HOST=devwebsite.local
     volumes:
       - .:/var/www/html
